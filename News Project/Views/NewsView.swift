@@ -11,8 +11,15 @@ struct NewsView: View{
     let article: Article
     
     var body: some View{
-        VStack{}
+        VStack(alignment: .leading){
+            Text(article.content ?? "-")
+                .frame(maxHeight: .infinity)
+                
+        }
             .navigationTitle(article.title)
+            .padding(16)
+            .frame(alignment: .leading)
     }
+
     
 }
