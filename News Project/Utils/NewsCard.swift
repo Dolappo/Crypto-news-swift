@@ -18,23 +18,24 @@ struct NewsCard: View {
         HStack(alignment: .top, spacing: 12) {
                 AsyncImage(url: item.urlToImage) { phase in
                                 if let image = phase.image {
-                                    // Success: Display the loaded image
+                                    
                                     image
                                         .resizable()
                                         .scaledToFill()
-                                        .frame(alignment: .leading)
+                                        
                                 
                                 } else if phase.error != nil {
-                                    // Error: Display an error placeholder
+                                    
                                     Image(systemName: "photo.on.rectangle.angled.badge.xmark")
                                         .foregroundColor(.red)
                                 } else {
-                                    // Placeholder: Display a loading indicator while fetching
+                                    
                                     ProgressView()
                                 }
                             }
-                .frame(width: 100, height: 100, alignment: .leading)
+                .frame(width: 100, height: 100)
                             .clipShape(RoundedRectangle(cornerRadius: 8))
+                            .clipped()
                     
                 
             VStack(alignment: .leading, spacing: 5){
@@ -43,7 +44,8 @@ struct NewsCard: View {
                         .font(.system(size: 16))
                         .padding(.bottom, 10)
                         .lineLimit(2)
-                        .frame(alignment: .leading)
+                        .multilineTextAlignment(.leading)
+                        
                    
                 HStack(alignment: .top){
                         Text(item.author ?? "-")
@@ -51,6 +53,8 @@ struct NewsCard: View {
                     }
                     
                 }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            
                 
             
             }

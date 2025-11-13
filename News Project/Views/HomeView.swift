@@ -50,17 +50,15 @@ struct HomeView: View {
                             Spacer()
                         }
                         else{
-                            ScrollView(showsIndicators: false){
+                            ScrollView(showsIndicators: false ){
                                 LazyVStack{
                                     ForEach(viewModel.filteredArticles){item in
                                         NavigationLink(destination: NewsView(article: item)){
                                             NewsCard(item: item)
                                         }
                                         .foregroundStyle(.primary)
-                                    
-                                        
-                                        
                                     }
+                                    
                                 }
                             }
                             .scrollIndicators(.hidden)
